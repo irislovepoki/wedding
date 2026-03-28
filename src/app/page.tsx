@@ -1,65 +1,108 @@
 import Image from "next/image";
+import { siteConfig } from "@/content/site";
+
+const albumPhotos = [
+  {
+    src: "/our-2017-1.jpg",
+    alt: "2017年的我们，湖边婚纱照",
+    objectPosition: "50% 52%",
+  },
+  {
+    src: "/our-2017-2.jpg",
+    alt: "2017年的我们，牵手散步的照片",
+    objectPosition: "50% 52%",
+  },
+];
+
+function FrameAlbum({
+  photos,
+  className,
+}: {
+  photos: { src: string; alt: string; objectPosition: string }[];
+  className: string;
+}) {
+  return (
+    <div className={`absolute z-0 overflow-hidden ${className}`}>
+      <div className="absolute -inset-[1.8%]">
+        <div className="album-scroll flex h-full w-full snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth">
+          {photos.map((photo) => (
+            <div
+              key={photo.src}
+              className="relative h-full min-w-full shrink-0 snap-center overflow-hidden"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                unoptimized
+                sizes="84vw"
+                className="object-cover"
+                style={{
+                  objectPosition: photo.objectPosition,
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <main className="w-full bg-[#4d1c20]">
+      <h1 className="sr-only">{siteConfig.share.title}</h1>
+
+      <section className="w-full">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/page-1.jpg"
+          alt="婚礼邀请函第一页"
+          width={1080}
+          height={2977}
           priority
+          unoptimized
+          sizes="100vw"
+          className="block h-auto w-full"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+      </section>
+
+      <section className="relative w-full">
+        <FrameAlbum photos={albumPhotos} className="left-[7.35%] top-[4.05%] h-[33.4%] w-[85.2%]" />
+
+        <Image
+          src="/page-2-frame.png"
+          alt="婚礼邀请函第二页"
+          width={1080}
+          height={1981}
+          priority
+          unoptimized
+          sizes="100vw"
+          className="relative z-10 block h-auto w-full"
+        />
+
+        <div className="pointer-events-none absolute left-[0.8%] top-[5.6%] z-20 h-[30%] w-[82%]">
+          <Image
+            src="/回形针1.png"
+            alt=""
+            fill
+            unoptimized
+            sizes="82vw"
+            className="object-contain object-left-top"
+          />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="pointer-events-none absolute right-[1.4%] top-[60.2%] z-20 h-[23%] w-[62%]">
+          <Image
+            src="/回形针2.png"
+            alt=""
+            fill
+            unoptimized
+            sizes="62vw"
+            className="object-contain object-right-top"
+          />
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
