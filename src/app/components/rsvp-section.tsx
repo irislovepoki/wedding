@@ -109,7 +109,7 @@ export function RSVPSection() {
       <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
         <form
           onSubmit={handleSubmit}
-          className="mt-[24%] flex w-full max-w-[13.5rem] flex-col gap-2.5"
+          className="mt-[29%] flex w-full max-w-[13.5rem] flex-col gap-2.5"
         >
           <input
             value={name}
