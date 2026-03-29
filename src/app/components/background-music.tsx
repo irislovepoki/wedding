@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const TRACK_SRC = "/wedding.mp3";
-const DEFAULT_VOLUME = 0.16;
+const DEFAULT_VOLUME = 0.13;
 const DUPLICATE_TAP_GUARD_MS = 400;
 
 export function BackgroundMusic() {
