@@ -8,49 +8,103 @@ const DEFAULT_VOLUME = 0.24;
 const DUPLICATE_TAP_GUARD_MS = 400;
 
 export function BackgroundMusic() {
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const audioRefs = useRef<Array<HTMLAudioElement | null>>([]);
   const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const activeSlotRef = useRef(0);
   const currentIndexRef = useRef(0);
+  const standbyIndexRef = useRef(1);
   const pausedByUserRef = useRef(true);
   const lastToggleAtRef = useRef(0);
   const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
-    const audio = audioRef.current;
+    const audioA = audioRefs.current[0];
+    const audioB = audioRefs.current[1];
     const button = buttonRef.current;
-    if (!audio || !button) {
+    if (!audioA || !audioB || !button) {
       return;
     }
 
-    audio.preload = "auto";
-    audio.loop = false;
-    audio.volume = DEFAULT_VOLUME;
-    audio.setAttribute("playsinline", "true");
-    audio.setAttribute("webkit-playsinline", "true");
-    audio.setAttribute("x5-playsinline", "true");
-    audio.src = playlist[0]!;
-    audio.load();
+    const allAudios = [audioA, audioB];
 
-    const handlePlay = () => {
-      setIsPlaying(true);
+    const configureAudio = (audio: HTMLAudioElement) => {
+      audio.preload = "auto";
+      audio.loop = false;
+      audio.volume = DEFAULT_VOLUME;
+      audio.setAttribute("playsinline", "true");
+      audio.setAttribute("webkit-playsinline", "true");
+      audio.setAttribute("x5-playsinline", "true");
     };
 
-    const handlePause = () => {
-      setIsPlaying(false);
+    const getAudio = (slot: number) => audioRefs.current[slot] ?? null;
+
+    const getActiveAudio = () => getAudio(activeSlotRef.current);
+
+    const getStandbyAudio = () => getAudio(activeSlotRef.current === 0 ? 1 : 0);
+
+    const loadTrackIntoAudio = (audio: HTMLAudioElement, trackIndex: number) => {
+      audio.src = playlist[trackIndex]!;
+      audio.load();
     };
 
-    const handleEnded = async () => {
-      if (pausedByUserRef.current) {
+    const preloadFollowingTrack = () => {
+      const standbyAudio = getStandbyAudio();
+      if (!standbyAudio) {
         return;
       }
 
-      const nextIndex = (currentIndexRef.current + 1) % playlist.length;
-      currentIndexRef.current = nextIndex;
-      audio.src = playlist[nextIndex]!;
-      audio.load();
+      const followingIndex = (currentIndexRef.current + 1) % playlist.length;
+      standbyIndexRef.current = followingIndex;
+      standbyAudio.pause();
+      standbyAudio.currentTime = 0;
+      loadTrackIntoAudio(standbyAudio, followingIndex);
+    };
+
+    const syncPlayState = () => {
+      setIsPlaying(allAudios.some((audio) => !audio.paused));
+    };
+
+    for (const audio of allAudios) {
+      configureAudio(audio);
+    }
+
+    currentIndexRef.current = 0;
+    activeSlotRef.current = 0;
+    loadTrackIntoAudio(audioA, currentIndexRef.current);
+    preloadFollowingTrack();
+
+    const handlePlay = () => {
+      syncPlayState();
+    };
+
+    const handlePause = () => {
+      syncPlayState();
+    };
+
+    const handleEnded = async (event: Event) => {
+      if (pausedByUserRef.current || event.currentTarget !== getActiveAudio()) {
+        return;
+      }
+
+      const currentAudio = getActiveAudio();
+      const nextAudio = getStandbyAudio();
+      if (!currentAudio || !nextAudio) {
+        setIsPlaying(false);
+        return;
+      }
+
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+
+      currentIndexRef.current = standbyIndexRef.current;
+      activeSlotRef.current = activeSlotRef.current === 0 ? 1 : 0;
+      nextAudio.currentTime = 0;
+      nextAudio.volume = DEFAULT_VOLUME;
 
       try {
-        await audio.play();
+        await nextAudio.play();
+        preloadFollowingTrack();
+        syncPlayState();
       } catch {
         setIsPlaying(false);
       }
@@ -60,18 +114,22 @@ export function BackgroundMusic() {
       void handleToggleRequest();
     };
 
-    audio.addEventListener("play", handlePlay);
-    audio.addEventListener("pause", handlePause);
-    audio.addEventListener("ended", handleEnded);
+    for (const audio of allAudios) {
+      audio.addEventListener("play", handlePlay);
+      audio.addEventListener("pause", handlePause);
+      audio.addEventListener("ended", handleEnded);
+    }
     button.addEventListener("click", handleNativeToggle);
     button.addEventListener("touchend", handleNativeToggle, { passive: true });
     button.addEventListener("pointerup", handleNativeToggle);
 
     return () => {
-      audio.pause();
-      audio.removeEventListener("play", handlePlay);
-      audio.removeEventListener("pause", handlePause);
-      audio.removeEventListener("ended", handleEnded);
+      for (const audio of allAudios) {
+        audio.pause();
+        audio.removeEventListener("play", handlePlay);
+        audio.removeEventListener("pause", handlePause);
+        audio.removeEventListener("ended", handleEnded);
+      }
       button.removeEventListener("click", handleNativeToggle);
       button.removeEventListener("touchend", handleNativeToggle);
       button.removeEventListener("pointerup", handleNativeToggle);
@@ -79,7 +137,18 @@ export function BackgroundMusic() {
   }, []);
 
   async function togglePlayback() {
-    const audio = audioRef.current;
+    const activeAudio = audioRefs.current[activeSlotRef.current];
+    if (!activeAudio) {
+      return;
+    }
+
+    const standbyAudio = audioRefs.current[activeSlotRef.current === 0 ? 1 : 0];
+    if (standbyAudio && !standbyAudio.paused) {
+      standbyAudio.pause();
+      standbyAudio.currentTime = 0;
+    }
+
+    const audio = activeAudio;
     if (!audio) {
       return;
     }
@@ -115,7 +184,18 @@ export function BackgroundMusic() {
   return (
     <>
       <audio
-        ref={audioRef}
+        ref={(node) => {
+          audioRefs.current[0] = node;
+        }}
+        className="pointer-events-none absolute h-0 w-0 opacity-0"
+        preload="auto"
+        playsInline
+      />
+
+      <audio
+        ref={(node) => {
+          audioRefs.current[1] = node;
+        }}
         className="pointer-events-none absolute h-0 w-0 opacity-0"
         preload="auto"
         playsInline
