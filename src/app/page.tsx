@@ -156,7 +156,7 @@ export default function Home() {
           src="/page-4.jpg"
           alt="婚礼邀请函第四页"
           width={1080}
-          height={2033}
+          height={2151}
           unoptimized
           sizes="100vw"
           className="block h-auto w-full"
