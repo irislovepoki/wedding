@@ -86,7 +86,7 @@ export default function Home() {
           src="/page-1.jpg"
           alt="婚礼邀请函第一页"
           width={1080}
-          height={2977}
+          height={3010}
           priority
           unoptimized
           sizes="100vw"
