@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { siteConfig } from "@/content/site";
 import { BackgroundMusic } from "./components/background-music";
+import { FrameAlbum } from "./components/frame-album";
 import { RSVPSection } from "./components/rsvp-section";
 
 type AlbumPhoto = {
@@ -29,51 +30,6 @@ const album2020Photos = createAlbumPhotos(
   23,
   new Set([4, 6, 11, 12, 13, 22]),
 );
-
-function FrameAlbum({
-  photos,
-  className,
-  bleedClassName = "-inset-[1.8%]",
-}: {
-  photos: AlbumPhoto[];
-  className: string;
-  bleedClassName?: string;
-}) {
-  return (
-    <div className={`absolute z-0 overflow-hidden ${className}`}>
-      <div className={`absolute ${bleedClassName}`}>
-        <div className="album-scroll flex h-full w-full snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth">
-          {photos.map((photo) => (
-            <div
-              key={photo.src}
-              className="relative h-full min-w-full shrink-0 snap-center overflow-hidden"
-            >
-              <Image
-                src="/polaroid-paper.png"
-                alt=""
-                fill
-                unoptimized
-                sizes="84vw"
-                className="object-cover"
-              />
-              <Image
-                src={photo.src}
-                alt={photo.alt}
-                fill
-                unoptimized
-                sizes="84vw"
-                className={photo.fit === "contain" ? "object-contain" : "object-cover"}
-                style={{
-                  objectPosition: photo.objectPosition,
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Home() {
   return (
