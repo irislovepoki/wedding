@@ -1,29 +1,46 @@
 import Image from "next/image";
 import { siteConfig } from "@/content/site";
+import { RSVPSection } from "./components/rsvp-section";
 
-const albumPhotos = [
-  {
-    src: "/our-2017-1.jpg",
-    alt: "2017年的我们，湖边婚纱照",
+type AlbumPhoto = {
+  src: string;
+  alt: string;
+  objectPosition: string;
+  fit: "contain" | "cover";
+};
+
+function createAlbumPhotos(
+  folder: string,
+  count: number,
+  portraitPhotos: Set<number>,
+): AlbumPhoto[] {
+  return Array.from({ length: count }, (_, index) => ({
+    src: `/${folder}/${String(index + 1).padStart(2, "0")}.jpg`,
+    alt: `${folder} 第 ${index + 1} 张`,
     objectPosition: "50% 52%",
-  },
-  {
-    src: "/our-2017-2.jpg",
-    alt: "2017年的我们，牵手散步的照片",
-    objectPosition: "50% 52%",
-  },
-];
+    fit: portraitPhotos.has(index + 1) ? "contain" : "cover",
+  }));
+}
+
+const album2017Photos = createAlbumPhotos("2017", 22, new Set([14, 18]));
+const album2020Photos = createAlbumPhotos(
+  "2020",
+  23,
+  new Set([4, 6, 11, 12, 13, 22]),
+);
 
 function FrameAlbum({
   photos,
   className,
+  bleedClassName = "-inset-[1.8%]",
 }: {
-  photos: { src: string; alt: string; objectPosition: string }[];
+  photos: AlbumPhoto[];
   className: string;
+  bleedClassName?: string;
 }) {
   return (
     <div className={`absolute z-0 overflow-hidden ${className}`}>
-      <div className="absolute -inset-[1.8%]">
+      <div className={`absolute ${bleedClassName}`}>
         <div className="album-scroll flex h-full w-full snap-x snap-mandatory overflow-x-auto overflow-y-hidden scroll-smooth">
           {photos.map((photo) => (
             <div
@@ -31,12 +48,20 @@ function FrameAlbum({
               className="relative h-full min-w-full shrink-0 snap-center overflow-hidden"
             >
               <Image
+                src="/polaroid-paper.png"
+                alt=""
+                fill
+                unoptimized
+                sizes="84vw"
+                className="object-cover"
+              />
+              <Image
                 src={photo.src}
                 alt={photo.alt}
                 fill
                 unoptimized
                 sizes="84vw"
-                className="object-cover"
+                className={photo.fit === "contain" ? "object-contain" : "object-cover"}
                 style={{
                   objectPosition: photo.objectPosition,
                 }}
@@ -68,7 +93,15 @@ export default function Home() {
       </section>
 
       <section className="relative w-full">
-        <FrameAlbum photos={albumPhotos} className="left-[7.35%] top-[4.05%] h-[33.4%] w-[85.2%]" />
+        <FrameAlbum
+          photos={album2017Photos}
+          className="left-[7.35%] top-[4.05%] h-[33.4%] w-[85.2%]"
+        />
+        <FrameAlbum
+          photos={album2020Photos}
+          className="left-[7.05%] top-[54.55%] h-[33.4%] w-[86.45%]"
+          bleedClassName="-inset-y-[1.1%] -inset-x-[0.8%]"
+        />
 
         <Image
           src="/page-2-frame.png"
@@ -78,7 +111,7 @@ export default function Home() {
           priority
           unoptimized
           sizes="100vw"
-          className="relative z-10 block h-auto w-full"
+          className="pointer-events-none relative z-10 block h-auto w-full"
         />
 
         <div className="pointer-events-none absolute left-[0.8%] top-[5.6%] z-20 h-[30%] w-[82%]">
@@ -102,6 +135,44 @@ export default function Home() {
             className="object-contain object-right-top"
           />
         </div>
+      </section>
+
+      <section className="w-full">
+        <Image
+          src="/page-3.jpg"
+          alt="婚礼邀请函第三页"
+          width={1080}
+          height={4179}
+          unoptimized
+          sizes="100vw"
+          className="block h-auto w-full"
+        />
+      </section>
+
+      <section className="w-full">
+        <Image
+          src="/page-4.jpg"
+          alt="婚礼邀请函第四页"
+          width={1080}
+          height={2033}
+          unoptimized
+          sizes="100vw"
+          className="block h-auto w-full"
+        />
+      </section>
+
+      <RSVPSection />
+
+      <section className="w-full">
+        <Image
+          src="/page-6.jpg"
+          alt="婚礼邀请函第六页"
+          width={1080}
+          height={638}
+          unoptimized
+          sizes="100vw"
+          className="block h-auto w-full"
+        />
       </section>
     </main>
   );

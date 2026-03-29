@@ -19,11 +19,15 @@
 
 html {
   background: var(--background);
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 body {
   min-height: 100dvh;
   margin: 0;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
   background:
     radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.06), transparent 18%),
     radial-gradient(circle at 80% 12%, rgba(255, 255, 255, 0.05), transparent 14%),
@@ -37,6 +41,10 @@ a {
   text-decoration: none;
 }
 
+main {
+  overflow-x: hidden;
+}
+
 ::selection {
   background: rgba(181, 118, 83, 0.24);
 }
@@ -44,6 +52,8 @@ a {
 .album-scroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
 }
 
 .album-scroll::-webkit-scrollbar {
