@@ -109,14 +109,14 @@ export function RSVPSection() {
       <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
         <form
           onSubmit={handleSubmit}
-          className="mt-[11%] flex w-full max-w-[13.5rem] flex-col gap-2.5"
+          className="mt-[24%] flex w-full max-w-[13.5rem] flex-col gap-2.5"
         >
           <input
             value={name}
             onChange={(event) => setName(event.target.value)}
             placeholder="姓名"
             autoComplete="name"
-            className="h-9 w-full border border-[#d8b47b]/60 bg-[#fbf1df]/92 px-3 text-center text-[16px] text-[#5a2326] outline-none transition placeholder:text-[#9a7a53] focus:border-[#c59b58] focus:ring-2 focus:ring-[#d7b27a]/30"
+            className="h-9 w-full border border-[#d8b47b]/60 bg-[#fbf1df]/92 px-3 text-center text-[15px] text-[#5a2326] outline-none transition placeholder:text-[#9a7a53] focus:border-[#c59b58] focus:ring-2 focus:ring-[#d7b27a]/30"
           />
 
           <input
@@ -125,13 +125,13 @@ export function RSVPSection() {
             placeholder="人数"
             inputMode="numeric"
             enterKeyHint="done"
-            className="h-9 w-full border border-[#d8b47b]/60 bg-[#fbf1df]/92 px-3 text-center text-[16px] text-[#5a2326] outline-none transition placeholder:text-[#9a7a53] focus:border-[#c59b58] focus:ring-2 focus:ring-[#d7b27a]/30"
+            className="h-9 w-full border border-[#d8b47b]/60 bg-[#fbf1df]/92 px-3 text-center text-[15px] text-[#5a2326] outline-none transition placeholder:text-[#9a7a53] focus:border-[#c59b58] focus:ring-2 focus:ring-[#d7b27a]/30"
           />
 
           <button
             type="submit"
             disabled={isSubmitting}
-            className="h-9 w-full border border-[#d8b47b]/65 bg-[#f0d8ab] text-[0.8rem] tracking-[0.14em] text-[#5a2326] transition active:scale-[0.99] disabled:opacity-70"
+            className="h-9 w-full border border-[#d8b47b]/65 bg-[#f0d8ab] text-[15px] text-[#5a2326] transition active:scale-[0.99] disabled:opacity-70"
           >
             {isSubmitting ? "提交中" : "提交"}
           </button>

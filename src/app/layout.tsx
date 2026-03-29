@@ -27,18 +27,18 @@ export const metadata: Metadata = {
     description: siteConfig.share.description,
     images: [
       {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
+        url: "/share-thumb.png",
+        width: 1024,
+        height: 1024,
         alt: siteConfig.share.imageAlt,
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: siteConfig.share.title,
     description: siteConfig.share.description,
-    images: ["/opengraph-image"],
+    images: ["/share-thumb.png"],
   },
   appleWebApp: {
     capable: true,

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { siteConfig } from "@/content/site";
+import { BackgroundMusic } from "./components/background-music";
 import { RSVPSection } from "./components/rsvp-section";
 
 type AlbumPhoto = {
@@ -78,6 +79,7 @@ export default function Home() {
   return (
     <main className="w-full bg-[#4d1c20]">
       <h1 className="sr-only">{siteConfig.share.title}</h1>
+      <BackgroundMusic />
 
       <section className="w-full">
         <Image
@@ -168,7 +170,7 @@ export default function Home() {
           src="/page-6.jpg"
           alt="婚礼邀请函第六页"
           width={1080}
-          height={638}
+          height={828}
           unoptimized
           sizes="100vw"
           className="block h-auto w-full"

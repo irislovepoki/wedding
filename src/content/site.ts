@@ -1,5 +1,5 @@
 export const siteConfig = {
-  siteUrl: "https://wedding.example.com",
+  siteUrl: "http://192.168.1.76:3000",
   share: {
     title: "李嘉昊&黄沪燕 | 婚礼邀请函",
     description: "诚挚邀请您参加我们的婚礼,见证我们的幸福",
