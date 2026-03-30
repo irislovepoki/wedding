@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-const TRACK_SRC = "/wedding.mp3";
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const TRACK_SRC = `${basePath}/wedding.mp3`;
 const DEFAULT_VOLUME = 0.13;
 const DUPLICATE_TAP_GUARD_MS = 400;
 
@@ -114,7 +115,7 @@ export function BackgroundMusic() {
           src="/music-toggle.png"
           alt=""
           fill
-          unoptimized
+  
           sizes="74px"
           className={`object-contain transition duration-300 ${isPlaying ? "animate-[spin_7s_linear_infinite] opacity-100" : "opacity-78 grayscale-[0.08]"}`}
         />

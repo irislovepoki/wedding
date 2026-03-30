@@ -86,7 +86,7 @@ export function RSVPSection() {
         alt="婚礼邀请函第五页 RSVP"
         width={1080}
         height={665}
-        unoptimized
+
         sizes="100vw"
         className="block h-auto w-full"
       />

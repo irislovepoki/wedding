@@ -52,7 +52,6 @@ function FrameAlbum({
                 src="/polaroid-paper.png"
                 alt=""
                 fill
-                unoptimized
                 sizes="84vw"
                 className="object-cover"
               />
@@ -60,7 +59,6 @@ function FrameAlbum({
                 src={photo.src}
                 alt={photo.alt}
                 fill
-                unoptimized
                 sizes="84vw"
                 className={photo.fit === "contain" ? "object-contain" : "object-cover"}
                 style={{
@@ -88,7 +86,7 @@ export default function Home() {
           width={1080}
           height={3010}
           priority
-          unoptimized
+
           sizes="100vw"
           className="block h-auto w-full"
         />
@@ -111,7 +109,7 @@ export default function Home() {
           width={1080}
           height={1981}
           priority
-          unoptimized
+
           sizes="100vw"
           className="pointer-events-none relative z-10 block h-auto w-full"
         />
@@ -121,7 +119,7 @@ export default function Home() {
             src="/回形针1.png"
             alt=""
             fill
-            unoptimized
+  
             sizes="82vw"
             className="object-contain object-left-top"
           />
@@ -132,7 +130,7 @@ export default function Home() {
             src="/回形针2.png"
             alt=""
             fill
-            unoptimized
+  
             sizes="62vw"
             className="object-contain object-right-top"
           />
@@ -145,7 +143,7 @@ export default function Home() {
           alt="婚礼邀请函第三页"
           width={1080}
           height={4179}
-          unoptimized
+
           sizes="100vw"
           className="block h-auto w-full"
         />
@@ -157,7 +155,7 @@ export default function Home() {
           alt="婚礼邀请函第四页"
           width={1080}
           height={2151}
-          unoptimized
+
           sizes="100vw"
           className="block h-auto w-full"
         />
@@ -171,7 +169,7 @@ export default function Home() {
           alt="婚礼邀请函第六页"
           width={1080}
           height={828}
-          unoptimized
+
           sizes="100vw"
           className="block h-auto w-full"
         />
