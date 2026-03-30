@@ -7,3 +7,14 @@ create table if not exists public.rsvp_submissions (
 
 create index if not exists rsvp_submissions_submitted_at_idx
   on public.rsvp_submissions (submitted_at desc);
+
+-- Enable Row Level Security (required for anon key access)
+alter table public.rsvp_submissions enable row level security;
+
+-- Allow anyone to insert (public RSVP submission)
+create policy "Allow public insert" on public.rsvp_submissions
+  for insert with check (true);
+
+-- Allow anyone to read (for rsvp-view page)
+create policy "Allow public select" on public.rsvp_submissions
+  for select using (true);

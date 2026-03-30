@@ -2,6 +2,7 @@
 
 import { startTransition, useEffect, useEffectEvent, useRef, useState } from "react";
 import Image from "next/image";
+import { submitRSVP } from "@/lib/supabase-client";
 
 export function RSVPSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -61,23 +62,7 @@ export function RSVPSection() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch("/api/rsvp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: name.trim(),
-          guests: guestCount,
-        }),
-      });
-
-      const result = (await response.json()) as { ok?: boolean; error?: string };
-
-      if (!response.ok) {
-        setError(result.error ?? "提交失败，请稍后再试");
-        return;
-      }
+      await submitRSVP(name.trim(), guestCount);
 
       startTransition(() => {
         setName("");
