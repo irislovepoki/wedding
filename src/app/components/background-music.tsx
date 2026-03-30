@@ -115,10 +115,15 @@ export function BackgroundMusic() {
           src="/music-toggle.png"
           alt=""
           fill
-  
           sizes="74px"
           className={`object-contain transition duration-300 ${isPlaying ? "animate-[spin_7s_linear_infinite] opacity-100" : "opacity-78 grayscale-[0.08]"}`}
         />
+
+        {!isPlaying ? (
+          <span className="pointer-events-none absolute inset-0 flex items-center justify-center text-[20px] text-[#f7ecd5] drop-shadow-[0_1px_2px_rgba(48,14,16,0.55)]">
+            🎵
+          </span>
+        ) : null}
       </button>
     </>
   );
