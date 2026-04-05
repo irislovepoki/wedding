@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const TRACK_SRC = `${basePath}/wedding.mp3`;
-const DEFAULT_VOLUME = 0.13;
+const DEFAULT_VOLUME = 0.117;
 const DUPLICATE_TAP_GUARD_MS = 400;
 
 export function BackgroundMusic() {
