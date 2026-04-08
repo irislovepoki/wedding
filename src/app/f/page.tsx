@@ -4,10 +4,10 @@ import { InvitationPage } from "../components/invitation-page";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "/young",
+    canonical: "/f",
   },
   openGraph: {
-    url: `${siteConfig.siteUrl}/young`,
+    url: `${siteConfig.siteUrl}/f`,
   },
 };
 
