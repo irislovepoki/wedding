@@ -99,7 +99,7 @@ export function RSVPSection() {
           <input
             value={name}
             onChange={(event) => setName(event.target.value)}
-            placeholder="姓名"
+            placeholder="姓名-多人请全写"
             autoComplete="name"
             className="h-9 w-full border border-[#d8b47b]/60 bg-[#fbf1df]/92 px-3 text-center text-[15px] text-[#5a2326] outline-none transition placeholder:text-[#9a7a53] focus:border-[#c59b58] focus:ring-2 focus:ring-[#d7b27a]/30"
           />
