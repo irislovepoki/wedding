@@ -3,7 +3,6 @@ import { SeatSearchForm } from "@/app/components/seat-search-form";
 import { getSeatLookupUrl } from "@/lib/seat-qr";
 
 const seatLookupDescription = "尊敬的贵宾,请输入您的姓名或名字首字母,查询您的桌号。";
-const seatShareImage = "/share-thumb.png";
 
 export const metadata: Metadata = {
   title: "婚礼座位查询",
@@ -15,20 +14,11 @@ export const metadata: Metadata = {
     title: "婚礼座位查询",
     description: seatLookupDescription,
     url: getSeatLookupUrl(),
-    images: [
-      {
-        url: seatShareImage,
-        width: 1200,
-        height: 630,
-        alt: "婚礼座位查询分享图",
-      },
-    ],
   },
   twitter: {
-    card: "summary_large_image",
+    card: "summary",
     title: "婚礼座位查询",
     description: seatLookupDescription,
-    images: [seatShareImage],
   },
 };
 
