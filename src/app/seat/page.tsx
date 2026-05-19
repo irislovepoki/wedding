@@ -21,9 +21,11 @@ export default function SeatLookupPage() {
       <div className="mx-auto flex w-full max-w-xl flex-col items-center">
         <div className="w-full text-center text-[#f8ebd4]">
           <p className="text-xs tracking-[0.34em] text-[#d8b47b]">WEDDING SEAT LOOKUP</p>
-          <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">查询你的桌号</h1>
+          <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">查询您的桌号</h1>
           <p className="mt-4 text-sm leading-7 text-[#f4dfc0]/86 sm:text-base">
-            请输入你的名字或名字首字母，查询完成后会显示你对应的桌号。
+            请输入您的名字或名字首字母
+            <br />
+            查询完成后会显示您对应的桌号
           </p>
         </div>
 
