@@ -54,7 +54,11 @@ export function SeatSearchForm() {
         {error ? <p className="text-[#b4423b]">{error}</p> : null}
 
         {!error && !searched ? (
-          <p>输入姓名、拼音或首字母后即可查询对应桌号。</p>
+          <p>
+            请输入姓名、拼音或首字母
+            <br />
+            查询您的桌号
+          </p>
         ) : null}
 
         {!error && searched && exactSingleMatch ? (

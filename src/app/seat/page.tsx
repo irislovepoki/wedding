@@ -30,9 +30,9 @@ export default function SeatLookupPage() {
           <p className="text-xs tracking-[0.34em] text-[#d8b47b]">WEDDING SEAT LOOKUP</p>
           <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">查询您的桌号</h1>
           <p className="mt-4 text-sm leading-7 text-[#f4dfc0]/86 sm:text-base">
-            请输入您的名字或名字首字母
+            尊敬的贵宾
             <br />
-            查询完成后会显示您对应的桌号
+            欢迎您的到来
           </p>
         </div>
 
