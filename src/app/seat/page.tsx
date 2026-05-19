@@ -2,16 +2,33 @@ import type { Metadata } from "next";
 import { SeatSearchForm } from "@/app/components/seat-search-form";
 import { getSeatLookupUrl } from "@/lib/seat-qr";
 
+const seatLookupDescription = "尊敬的贵宾,请输入您的姓名或名字首字母,查询您的桌号。";
+const seatShareImage = "/share-thumb.png";
+
 export const metadata: Metadata = {
   title: "婚礼座位查询",
-  description: "请输入姓名或名字首字母，快速查询婚礼桌号。",
+  description: seatLookupDescription,
   alternates: {
     canonical: "/seat",
   },
   openGraph: {
     title: "婚礼座位查询",
-    description: "请输入姓名或名字首字母，快速查询婚礼桌号。",
+    description: seatLookupDescription,
     url: getSeatLookupUrl(),
+    images: [
+      {
+        url: seatShareImage,
+        width: 1200,
+        height: 630,
+        alt: "婚礼座位查询分享图",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "婚礼座位查询",
+    description: seatLookupDescription,
+    images: [seatShareImage],
   },
 };
 

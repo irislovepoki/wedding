@@ -36,7 +36,7 @@ export function SeatSearchForm() {
         <input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="请输入你的名字或名字首字母"
+          placeholder="请输入您的名字或名字首字母"
           autoComplete="name"
           enterKeyHint="search"
           className="h-13 rounded-full border border-[#cfad7d]/80 bg-white px-5 text-center text-base text-[#5a2326] outline-none transition placeholder:text-[#a48663] focus:border-[#ba8d53] focus:ring-3 focus:ring-[#cfad7d]/20"

@@ -1,11 +1,32 @@
 import type { Metadata } from "next";
 import { SeatLookupPromo } from "@/app/components/seat-lookup-promo";
 
+const seatQrDescription = "现场扫码后可直接进入婚礼座位查询页面。";
+const seatShareImage = "/share-thumb.png";
+
 export const metadata: Metadata = {
   title: "婚礼座位查询二维码",
-  description: "现场扫码后可直接进入婚礼座位查询页面。",
+  description: seatQrDescription,
   alternates: {
     canonical: "/seat/qr",
+  },
+  openGraph: {
+    title: "婚礼座位查询二维码",
+    description: seatQrDescription,
+    images: [
+      {
+        url: seatShareImage,
+        width: 1200,
+        height: 630,
+        alt: "婚礼座位查询二维码分享图",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "婚礼座位查询二维码",
+    description: seatQrDescription,
+    images: [seatShareImage],
   },
 };
 
