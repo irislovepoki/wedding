@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { SeatSearchForm } from "@/app/components/seat-search-form";
 import { getSeatLookupUrl } from "@/lib/seat-qr";
 
-const seatLookupDescription = "尊敬的贵宾,请输入您的姓名或名字首字母,查询您的桌号。";
+const seatLookupDescription = "请输入您的姓名或名字首字母,查询您的桌号。";
 
 export const metadata: Metadata = {
   title: "婚礼座位查询",
