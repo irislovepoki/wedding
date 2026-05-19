@@ -115,7 +115,7 @@ export const seatTables: SeatTable[] = [
       { name: "袁青" },
       { name: "杨尚欢" },
       { name: "邵幼平" },
-      { name: "姚德鸿" },
+      { name: "姚德宏" },
       { name: "毛文辉" },
     ],
   },
