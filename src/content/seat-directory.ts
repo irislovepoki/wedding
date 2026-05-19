@@ -29,6 +29,9 @@ export const seatTables: SeatTable[] = [
       { name: "葛更坚夫妇" },
       { name: "王坚敏夫妇" },
       { name: "黄星阳夫妇" },
+      { name: "汤洁勤" },
+      { name: "丁舒君" },
+      { name: "李旭军" },
     ],
   },
   {
@@ -36,6 +39,12 @@ export const seatTables: SeatTable[] = [
     guests: [
       { name: "张必勇全家" },
       { name: "张必成全家" },
+      { name: "方叶" },
+      { name: "董加萍" },
+      { name: "曹蕾" },
+      { name: "王勤" },
+      { name: "张昱宸" },
+      { name: "王浦开" },
     ],
   },
   {
@@ -46,6 +55,9 @@ export const seatTables: SeatTable[] = [
       { name: "蔡济宽夫妇" },
       { name: "林方仁夫妇" },
       { name: "蔡芊芮夫妇" },
+      { name: "周恒磊" },
+      { name: "周怡" },
+      { name: "严庄" },
     ],
   },
   {
@@ -58,6 +70,8 @@ export const seatTables: SeatTable[] = [
       { name: "包虹剑夫妇" },
       { name: "陈展华夫妇" },
       { name: "许前芬" },
+      { name: "王文燕" },
+      { name: "周敏军" },
     ],
   },
   {
@@ -70,6 +84,9 @@ export const seatTables: SeatTable[] = [
       { name: "陈瑶" },
       { name: "张怡" },
       { name: "孙锴柯" },
+      { name: "徐国富" },
+      { name: "王森昌" },
+      { name: "奚国平" },
     ],
   },
   {
@@ -83,6 +100,8 @@ export const seatTables: SeatTable[] = [
       { name: "王亦颖" },
       { name: "张斐娟" },
       { name: "吴生娟" },
+      { name: "陈林芳" },
+      { name: "凤玮" },
     ],
   },
   {
@@ -94,6 +113,10 @@ export const seatTables: SeatTable[] = [
       { name: "王雪絮夫妇" },
       { name: "张宁东夫妇" },
       { name: "袁青" },
+      { name: "杨尚欢" },
+      { name: "邵幼平" },
+      { name: "姚德鸿" },
+      { name: "毛文辉" },
     ],
   },
   {
@@ -159,6 +182,10 @@ export const seatTables: SeatTable[] = [
       { name: "许乐庸夫妇" },
       { name: "张明东夫妇" },
       { name: "陈昱夫妇" },
+      { name: "李瑶" },
+      { name: "马海健" },
+      { name: "高丽华" },
+      { name: "刘丽" },
     ],
   },
   {
