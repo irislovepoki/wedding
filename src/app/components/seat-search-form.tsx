@@ -55,9 +55,11 @@ export function SeatSearchForm() {
 
         {!error && !searched ? (
           <p>
-            请输入姓名、拼音或首字母
+            2026.05.24 周日
             <br />
-            查询您的桌号
+            外滩华尔道夫酒店 二楼
+            <br />
+            期待与您共度浪漫的夜晚
           </p>
         ) : null}
 

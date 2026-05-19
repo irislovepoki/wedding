@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { Metadata } from "next";
 import { SeatSearchForm } from "@/app/components/seat-search-form";
 import { getSeatLookupUrl } from "@/lib/seat-qr";
@@ -29,11 +30,16 @@ export default function SeatLookupPage() {
         <div className="w-full text-center text-[#f8ebd4]">
           <p className="text-xs tracking-[0.34em] text-[#d8b47b]">WEDDING SEAT LOOKUP</p>
           <h1 className="mt-4 text-4xl font-semibold sm:text-5xl">查询您的桌号</h1>
-          <p className="mt-4 text-sm leading-7 text-[#f4dfc0]/86 sm:text-base">
-            尊敬的贵宾
-            <br />
-            欢迎您的到来
-          </p>
+          <div className="mx-auto mt-4 w-full max-w-[18rem] sm:max-w-[20rem]">
+            <Image
+              src="/seat-layout-bottom.png"
+              alt="婚礼席位图"
+              width={1290}
+              height={2796}
+              sizes="100vw"
+              className="block h-auto w-full"
+            />
+          </div>
         </div>
 
         <div className="mt-8 w-full">
