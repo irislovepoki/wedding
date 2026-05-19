@@ -1,0 +1,243 @@
+export type SeatGuest = {
+  name: string;
+  keywords?: string[];
+};
+
+export type SeatTable = {
+  table: string;
+  guests: SeatGuest[];
+};
+
+// 系统会自动根据 `name` 生成拼音和首字母；`keywords` 只在需要补充别名时再填写。
+export const seatTables: SeatTable[] = [
+  {
+    table: "1号桌",
+    guests: [
+      { name: "李兵" },
+      { name: "蔡立群" },
+      { name: "黄学昌" },
+      { name: "杨水英" },
+      { name: "蔡立荣夫妇" },
+      { name: "张洋" },
+      { name: "沈秀子" },
+    ],
+  },
+  {
+    table: "2号桌",
+    guests: [
+      { name: "张春波夫妇" },
+      { name: "葛更坚夫妇" },
+      { name: "王坚敏夫妇" },
+      { name: "黄星阳夫妇" },
+    ],
+  },
+  {
+    table: "5号桌",
+    guests: [
+      { name: "张必勇全家" },
+      { name: "张必成全家" },
+    ],
+  },
+  {
+    table: "6号桌",
+    guests: [
+      { name: "李宗文" },
+      { name: "李晓焱全家" },
+      { name: "蔡济宽夫妇" },
+      { name: "林方仁夫妇" },
+      { name: "蔡芊芮夫妇" },
+    ],
+  },
+  {
+    table: "7号桌",
+    guests: [
+      { name: "傅斌杰" },
+      { name: "王东波" },
+      { name: "张军" },
+      { name: "宋建平夫妇" },
+      { name: "包虹剑夫妇" },
+      { name: "陈展华夫妇" },
+      { name: "许前芬" },
+    ],
+  },
+  {
+    table: "8号桌",
+    guests: [
+      { name: "张雪琴夫妇" },
+      { name: "张晓红夫妇" },
+      { name: "张晓文夫妇" },
+      { name: "姚月敏" },
+      { name: "陈瑶" },
+      { name: "张怡" },
+      { name: "孙锴柯" },
+    ],
+  },
+  {
+    table: "9号桌",
+    guests: [
+      { name: "张祖卿夫妇" },
+      { name: "张玲珠" },
+      { name: "张坚兵夫妇" },
+      { name: "徐晓斌" },
+      { name: "余梓鸣" },
+      { name: "王亦颖" },
+      { name: "张斐娟" },
+      { name: "吴生娟" },
+    ],
+  },
+  {
+    table: "10号桌",
+    guests: [
+      { name: "王威" },
+      { name: "江筠夫妇" },
+      { name: "童雷夫妇" },
+      { name: "王雪絮夫妇" },
+      { name: "张宁东夫妇" },
+      { name: "袁青" },
+    ],
+  },
+  {
+    table: "11号桌",
+    guests: [
+      { name: "施洪飞" },
+      { name: "邵振兴" },
+      { name: "薛兴冲" },
+      { name: "类叶良" },
+      { name: "施晓明" },
+      { name: "顾红燕" },
+      { name: "王卫星" },
+      { name: "高美林" },
+    ],
+  },
+  {
+    table: "12号桌",
+    guests: [
+      { name: "汪楠" },
+      { name: "李钻祺" },
+      { name: "吕蓓倩" },
+      { name: "刘向彧" },
+      { name: "权佳敏" },
+      { name: "张禹卿" },
+      { name: "杜忆" },
+      { name: "盛鑫瑜" },
+    ],
+  },
+  {
+    table: "15号桌",
+    guests: [
+      { name: "顾平" },
+      { name: "盛卫岳" },
+      { name: "徐锦华" },
+      { name: "冯辉" },
+      { name: "李兵" },
+      { name: "袁庆华" },
+      { name: "徐挺" },
+      { name: "周志超" },
+      { name: "黄占红" },
+      { name: "易峰" },
+    ],
+  },
+  {
+    table: "16号桌",
+    guests: [
+      { name: "杨汪" },
+      { name: "王丽" },
+      { name: "黄梓涵" },
+      { name: "王予涵" },
+      { name: "洪巧梅" },
+      { name: "黄琴" },
+      { name: "王迅辉" },
+      { name: "徐亚萍" },
+      { name: "季红俭" },
+    ],
+  },
+  {
+    table: "17号桌",
+    guests: [
+      { name: "郭定伟夫妇" },
+      { name: "刘裕人夫妇" },
+      { name: "许乐庸夫妇" },
+      { name: "张明东夫妇" },
+      { name: "陈昱夫妇" },
+    ],
+  },
+  {
+    table: "18号桌",
+    guests: [
+      { name: "李先生" },
+      { name: "王世祥" },
+      { name: "张郁平" },
+      { name: "严卫" },
+      { name: "林健" },
+      { name: "樊红雷" },
+      { name: "周辉" },
+      { name: "蔡军" },
+      { name: "王卫忠" },
+      { name: "张健" },
+    ],
+  },
+  {
+    table: "19号桌",
+    guests: [
+      { name: "黄菊华" },
+      { name: "黄静" },
+      { name: "陈季红" },
+      { name: "蔡舞琴" },
+      { name: "黄维忠" },
+      { name: "沈新娣" },
+      { name: "黄学平" },
+      { name: "陈卫红" },
+      { name: "张锦娟" },
+      { name: "王新炎" },
+    ],
+  },
+  {
+    table: "20号桌",
+    guests: [
+      { name: "陈渊夫妇" },
+      { name: "胡小雷" },
+      { name: "郑军" },
+      { name: "唐军" },
+      { name: "曾生" },
+      { name: "舒华" },
+      { name: "林海" },
+      { name: "王凯夫妇" },
+    ],
+  },
+  {
+    table: "A桌",
+    guests: [
+      { name: "黄沪燕" },
+      { name: "李嘉昊" },
+      { name: "王学强" },
+      { name: "马家驹" },
+      { name: "张倬豪" },
+      { name: "方诗涛" },
+      { name: "方苇" },
+      { name: "桂华杰" },
+      { name: "黄佳敏" },
+      { name: "徐雨川" },
+      { name: "余潇龙" },
+      { name: "张奕羽" },
+      { name: "蔡欣成" },
+    ],
+  },
+  {
+    table: "B桌",
+    guests: [
+      { name: "赵一杰" },
+      { name: "卢心钰" },
+      { name: "邵亦心" },
+      { name: "黄家达" },
+      { name: "杜金纬" },
+      { name: "朱奥博" },
+      { name: "杜嘉豪" },
+      { name: "董雨晴" },
+      { name: "沈涧" },
+      { name: "李博" },
+      { name: "蒋一甫" },
+      { name: "萨仁高娃" },
+      { name: "吴小英" },
+    ],
+  },
+];
